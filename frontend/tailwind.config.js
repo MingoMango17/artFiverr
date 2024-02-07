@@ -16,6 +16,7 @@ export default {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'dirty-white': '#F5F5F5',
+      'army-green': '#1F4B3F',
     },
   },
   plugins: [],

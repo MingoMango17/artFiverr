@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto w-5/6">
+    <div class="mx-auto">
         <header class="container text-midnight py-4 px-6 flex justify-between items-center">
             <!-- Logo -->
             <div class="logo">
