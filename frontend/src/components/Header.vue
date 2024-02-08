@@ -5,7 +5,7 @@
             <div class="logo">
                 Your Logo Here
             </div>
-            <h1 class="m-4 font-bold">Artefy</h1>
+            <h1 class="m-4 font-bold font-dm-sans">Artefy</h1>
             
             <!-- Navigation -->
             <nav class="mx-auto flex justify-between items-center">
@@ -19,13 +19,18 @@
 
             <!-- Login and Sign Up Buttons -->
             <div class="buttons flex space-x-2">
-                <button class="login-btn">Log In</button>
-                <button class="signup-btn">Sign Up</button>
+                <button class="login-btn font-dm-sans">Log In</button>
+                <button class="signup-btn bg-army-green text-white rounded-md py-2 px-3 font-dm-sans">Sign Up</button>
             </div>
         </header>
         <hr/>
     </div>
+    
 </template>
+
+
+
+
 
 <script setup>
 
