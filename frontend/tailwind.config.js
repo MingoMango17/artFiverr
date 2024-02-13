@@ -17,6 +17,7 @@ export default {
         bermuda: "#78dcca",
         "dirty-white": "#F5F5F5",
         "army-green": "#1F4B3F",
+        "brownish": "#FBF8EF",
       },
       fontFamily: {
         'dm-sans': ['DM Sans', 'sans-serif'],
