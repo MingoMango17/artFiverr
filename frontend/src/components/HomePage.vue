@@ -30,7 +30,7 @@
         <img src="../assets/artist.svg" alt="Artist" class="object-center" />
       </div>
     </div>
-    <div class="bg-army-green rounded-lg p-8 text-white font-dm-sans">
+    <div class="mb-10 bg-army-green rounded-lg p-8 text-white font-dm-sans">
       <h1 class="font-bold text-2xl mb-10">Need Something Done?</h1>
       <div class="flex space-x-4">
         <div class="mb-4">
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-white p-10 my-10">
+    <!-- <div class="bg-white p-10 my-10">
       <h2>Featured Arts</h2>
       <div class="flex m-10">
         <div v-for="art in featArts" class="w-1/5">
@@ -81,7 +81,7 @@
           <p>{{ art.artist }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </template>
   
   <style>
@@ -102,27 +102,27 @@
   <script setup>
   import { ref } from "vue";
   
-  const featArts = ref([
-    {
-      title: "Wallowing Breeze",
-      artist: "Elena Monroe",
-    },
-    {
-      title: "Wallowing Breeze",
-      artist: "Nhicole Munasque",
-    },
-    {
-      title: "Wallowing Breeze",
-      artist: "Nhicole Munasque",
-    },
-    {
-      title: "Wallowing Breeze",
-      artist: "Nhicole Munasque",
-    },
-    {
-      title: "Wallowing Breeze",
-      artist: "Nhicole Munasque",
-    },
-  ]);
+  // const featArts = ref([
+  //   {
+  //     title: "Wallowing Breeze",
+  //     artist: "Elena Monroe",
+  //   },
+  //   {
+  //     title: "Wallowing Breeze",
+  //     artist: "Nhicole Munasque",
+  //   },
+  //   {
+  //     title: "Wallowing Breeze",
+  //     artist: "Nhicole Munasque",
+  //   },
+  //   {
+  //     title: "Wallowing Breeze",
+  //     artist: "Nhicole Munasque",
+  //   },
+  //   {
+  //     title: "Wallowing Breeze",
+  //     artist: "Nhicole Munasque",
+  //   },
+  // ]);
   </script>
   

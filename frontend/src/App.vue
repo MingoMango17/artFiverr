@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <InternalPageRoot/>
+  <router-view/>
 </template>
 
 <style scoped>
