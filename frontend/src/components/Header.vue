@@ -13,7 +13,7 @@
         <!-- Navigation -->
         <nav class="mx-auto flex justify-between items-center">
           <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
-            <li class="cursor-pointer">Home</li>
+            <li class="cursor-pointer" @click="navigateToRoute('Home')">Home</li>
             <li class="cursor-pointer">About</li>
             <li class="cursor-pointer">Services</li>
             <li class="cursor-pointer">Contact</li>
@@ -25,6 +25,7 @@
           <button class="login-btn font-dm-sans">Log In</button>
           <button
             class="signup-btn bg-army-green text-white rounded-md py-2 px-3 font-dm-sans"
+            @click="navigateToRoute('Signup')"
           >
             Sign Up
           </button>
@@ -40,7 +41,6 @@
   const router = useRouter();
 
   const navigateToRoute = (routeName) => {
-    console.log('heeys');
     router.push({ name: routeName });
   }
 
