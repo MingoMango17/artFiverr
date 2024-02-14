@@ -7,10 +7,6 @@
     </div>
 </template>
 
-
 <script setup>
     import Header from './Header.vue';
-    import HomePage from './HomePage.vue';
-    import SignupPage from './SignUpPage.vue';
-
 </script>

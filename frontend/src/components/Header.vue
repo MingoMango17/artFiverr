@@ -13,10 +13,10 @@
         <!-- Navigation -->
         <nav class="mx-auto flex justify-between items-center">
           <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li class="cursor-pointer">Home</li>
+            <li class="cursor-pointer">About</li>
+            <li class="cursor-pointer">Services</li>
+            <li class="cursor-pointer">Contact</li>
           </ul>
         </nav>
   
@@ -34,5 +34,15 @@
     </div>
   </template>
   
-  <script setup></script>
+<script setup>
+  import { useRouter, useRoute } from 'vue-router'
+
+  const router = useRouter();
+
+  const navigateToRoute = (routeName) => {
+    console.log('heeys');
+    router.push({ name: routeName });
+  }
+
+</script>
   
