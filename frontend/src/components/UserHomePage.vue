@@ -1,5 +1,5 @@
 <template>
-  <SearchBar/>
+  <SearchBar />
   <div class="mt-10 flex">
     <div class="mr-10 w-1/4">
       <div class="rounded-lg overflow-hidden shadow-lg">
@@ -20,9 +20,11 @@
       </div>
     </div>
     <div class="mr-10 w-1/4">
-      <div class="rounded-lg overflow-hidden shadow-lg">
-        <img :src="placeholder" :alt="'alternative'" class="w-full h-auto" />
-      </div>
+      <a href="#">
+        <div class="rounded-lg overflow-hidden shadow-lg">
+          <img :src="placeholder" :alt="'alternative'" class="w-full h-auto" />
+        </div>
+      </a>
       <div class="flex justify-between">
         <p>Zian Rinzler Valles</p>
         <p>70 likes</p>
@@ -38,10 +40,12 @@
       </div>
     </div>
   </div>
+  <Pagination />
 </template>
 
 <script setup>
-import SearchBar from "./SearchBar.vue"
+import SearchBar from "./SearchBar.vue";
+import Pagination from "./Pagination.vue";
 import placeholder from "../images/placeholder.jpg";
 import placeholder2 from "../images/images.jpg";
 </script>

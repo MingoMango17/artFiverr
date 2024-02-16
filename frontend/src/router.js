@@ -3,6 +3,7 @@ import HomePage from './components/HomePage.vue';
 import InternalPageRoot from './components/InternalPageRoot.vue';
 import SignupPage from './components/SignupPage.vue';
 import UserHomePage from './components/UserHomePage.vue';
+import ChatPage from './components/ChatPage.vue'
 
 const routes = [
     {
@@ -23,6 +24,11 @@ const routes = [
             path: 'hire',
             name: 'Hire',
             component: UserHomePage,
+          },
+          {
+            path: 'chat',
+            name: 'Chat',
+            component: ChatPage,
           }
           // Add more routes as needed
         ]
