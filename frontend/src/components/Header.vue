@@ -13,10 +13,11 @@
         <!-- Navigation -->
         <nav class="mx-auto flex justify-between items-center">
           <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
-            <li class="cursor-pointer  hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Home')">Home</li>
-            <li class="cursor-pointer  hover:bg-dark-orange rounded-md py-2 px-3">About</li>
-            <li class="cursor-pointer  hover:bg-dark-orange rounded-md py-2 px-3">Services</li>
-            <li class="cursor-pointer  hover:bg-dark-orange rounded-md py-2 px-3">Contact</li>
+            <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Home')">Home</li>
+            <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Hire')">Hire</li>
+            <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">About</li>
+            <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">Services</li>
+            <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">Contact</li>
           </ul>
         </nav>
   
