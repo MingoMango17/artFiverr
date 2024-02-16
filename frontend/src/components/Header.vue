@@ -14,6 +14,7 @@
         <nav class="mx-auto flex justify-between items-center">
           <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
             <li class="cursor-pointer" @click="navigateToRoute('Home')">Home</li>
+            <li class="cursor-pointer" @click="navigateToRoute('Hire')">Hire</li>
             <li class="cursor-pointer">About</li>
             <li class="cursor-pointer">Services</li>
             <li class="cursor-pointer">Contact</li>

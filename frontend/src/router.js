@@ -20,8 +20,8 @@ const routes = [
             component: SignupPage,
           },
           {
-            path: 'home',
-            name: 'User Home',
+            path: 'hire',
+            name: 'Hire',
             component: UserHomePage,
           }
           // Add more routes as needed
