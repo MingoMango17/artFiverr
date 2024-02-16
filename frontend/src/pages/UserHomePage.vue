@@ -2,7 +2,7 @@
   <SearchBar />
   <div class="mt-10 flex">
     <div class="mr-10 w-1/4">
-      <div class="rounded-lg overflow-hidden shadow-lg">
+      <div class="rounded-lg overflow-hidden shadow-lg cursor-pointer" @click="navigateToArtistRoute('Artist', 5)">
         <img :src="placeholder" :alt="'alternative'" class="w-full h-auto" />
       </div>
       <div class="flex justify-between">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="mr-10 w-1/4">
-      <div class="rounded-lg overflow-hidden shadow-lg">
+      <div class="rounded-lg overflow-hidden shadow-lg cursor-pointer" @click="navigateToArtistRoute('Artist', 5)">
         <img :src="placeholder" :alt="'alternative'" class="w-full h-auto" />
       </div>
       <div class="flex justify-between">
@@ -20,11 +20,9 @@
       </div>
     </div>
     <div class="mr-10 w-1/4">
-      <a href="#">
-        <div class="rounded-lg overflow-hidden shadow-lg">
+        <div class="rounded-lg overflow-hidden shadow-lg cursor-pointer" @click="navigateToArtistRoute('Artist', 5)">
           <img :src="placeholder" :alt="'alternative'" class="w-full h-auto" />
         </div>
-      </a>
       <div class="flex justify-between">
         <p>Zian Rinzler Valles</p>
         <p>70 likes</p>
