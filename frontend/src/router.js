@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomePage from './components/HomePage.vue';
-import InternalPageRoot from './components/InternalPageRoot.vue';
-import SignupPage from './components/SignupPage.vue';
-import UserHomePage from './components/UserHomePage.vue';
-import ChatPage from './components/ChatPage.vue'
+import HomePage from './pages/HomePage.vue';
+import InternalPageRoot from './pages/InternalPageRoot.vue';
+import SignupPage from './pages/SignupPage.vue';
+import UserHomePage from './pages/UserHomePage.vue';
+import ChatPage from './pages/ChatPage.vue'
+import HireArtistPage from './pages/HireArtistPage.vue';
 
 const routes = [
     {
@@ -29,6 +30,11 @@ const routes = [
             path: 'chat',
             name: 'Chat',
             component: ChatPage,
+          },
+          {
+            path: 'artist/:artistId',
+            name: 'Artist',
+            component: HireArtistPage,
           }
           // Add more routes as needed
         ]
