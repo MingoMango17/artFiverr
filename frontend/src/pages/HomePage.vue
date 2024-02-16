@@ -3,7 +3,7 @@
       <div class="w-2/3 font-dm-sans ">
         <h1
           class="mt-20 mr-10 mb-5 font-semibold text-5xl text-army-green "
-          v-motion-pop-visible-once
+
         >
           Unleash your imagination; commission the finest artistry tailored to
           your vision.
@@ -84,20 +84,7 @@
     </div> -->
   </template>
   
-  <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  
-    .animate-fade-in {
-      animation: fadeIn 1s ease-in-out;
-    }
-  </style>
+=
   
   <script setup>
   import { ref } from "vue";
