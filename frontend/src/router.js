@@ -5,6 +5,7 @@ import SignupPage from './pages/SignupPage.vue';
 import UserHomePage from './pages/UserHomePage.vue';
 import ChatPage from './pages/ChatPage.vue'
 import HireArtistPage from './pages/HireArtistPage.vue';
+import LogInPage from './components/LogInPage.vue';
 
 const routes = [
     {
@@ -35,6 +36,11 @@ const routes = [
             path: 'artist/:artistId',
             name: 'Artist',
             component: HireArtistPage,
+          },
+          {
+            path: 'login',
+            name: 'LogIn',
+            component: LogInPage,
           }
           // Add more routes as needed
         ]
