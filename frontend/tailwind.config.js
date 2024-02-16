@@ -18,7 +18,9 @@ export default {
         "dirty-white": "#F5F5F5",
         "army-green": "#1F4B3F",
         "brownish": "#FBF8EF",
-        "dark-orange": "#F2AA4CFF"
+        "dark-orange": "#F2AA4CFF",
+        "slime-green": "#4daa57",
+        "dark-navy": "#0d0c22",
       },
       fontFamily: {
         'dm-sans': ['DM Sans', 'sans-serif'],

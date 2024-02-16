@@ -1,40 +1,70 @@
 <template>
-    <div class="hire-an-artist-page">
-      <div class="artist-profile bg-white rounded-lg shadow-lg p-6 flex items-center">
-        <img :src="artist.profilePicture" :alt="artist.name" class="w-24 h-24 rounded-full mr-6">
-        <div class="artist-details">
-          <h2 class="text-2xl font-semibold">{{ artist.name }}</h2>
-          <p class="text-gray-700">{{ artist.description }}</p>
-          <p class="text-gray-700">Location: {{ artist.location }}</p>
-          <p class="text-gray-700">Skills: {{ artist.skills.join(', ') }}</p>
-          <p class="text-gray-700">Price: ${{ artist.price }}/hour</p>
-          <!-- Add more details as needed -->
-          <button @click="hireArtist" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-            Hire {{ artist.name }}
+  <div class="hire-an-artist-page">
+    <div
+      class="artist-profile bg-white rounded-lg shadow-lg p-6 items-center font-dm-sans"
+    >
+      <div class="title-container">
+        <h1 class="text-2xl">Places We Won't Walk</h1>
+      </div>
+
+      <div class="profile-container my-5 flex items-center">
+        <div class="box-pic w-12 h-12">
+          <img
+            src="../assets/profile_sample.png"
+            alt="Artist"
+            class="rounded-full h-auto w-auto"
+          />
+        </div>
+        <div class="name-container ml-3">
+          <p>Zian Rinzler Valles</p>
+          <p class="text-slime-green text-xs">Available for work</p>
+        </div>
+        <div class="gettouch ml-auto">
+          <button
+            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm"
+          >
+            Get in touch
+          </button>
+        </div>
+      </div>
+
+      <div class="art-image flex justify-center items-center">
+        <!-- Added 'flex justify-center items-center' classes -->
+        <img
+          src="../assets/sample-art.jpg"
+          alt="Artist"
+          class="w-auto h-auto"
+        />
+      </div>
+
+      <div class="flex items-center mt-6">
+        <!-- Left line -->
+        <hr class="flex-grow border-t-2 border-gray-500" />
+
+        <!-- Image container in the middle -->
+        <div class="mx-4">
+          <img
+            src="../assets/profile_sample.png"
+            alt="Your Image"
+            class="w-16 h-16 rounded-full"
+          />
+        </div>
+
+        <!-- Right line -->
+        <hr class="flex-grow border-t-2 border-gray-500" />
+      </div>
+
+      <div class="name-container ml-3 flex items-center justify-center my-4">
+        <div class="text-center">
+          <p class="mb-2">Zian Rinzler Valles</p>
+
+          <button
+            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm"
+          >
+            Get in touch
           </button>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  
-  const artist = ref({
-    name: 'Artist Name',
-    profilePicture: 'path/to/profile-picture.jpg',
-    description: 'Artist bio and description...',
-    location: 'Artist location',
-    skills: ['Skill 1', 'Skill 2', 'Skill 3'],
-    price: 50 // Hourly rate or price range
-  });
-  
-  const hireArtist = () => {
-    // Handle hiring process, e.g., redirect to a form or contact page
-  };
-  </script>
-  
-  <style scoped>
-  /* No changes needed for scoped styles with Tailwind CSS */
-  </style>
-  
+  </div>
+</template>
