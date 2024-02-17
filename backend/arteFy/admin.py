@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import appUser, Contract
+
+admin.site.register(appUser)
+admin.site.register(Contract)
