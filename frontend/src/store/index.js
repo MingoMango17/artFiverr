@@ -22,6 +22,7 @@ const store = createStore({
         },
         LOGOUT(state) {
             state.isLoggedIn = false;
+            state.userUID = '';
         },
         SETUSERUID(state, uid) {
             state.userUID = uid;

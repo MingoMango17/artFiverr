@@ -67,7 +67,7 @@ import { useRouter } from 'vue-router';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useStore } from 'vuex';
 import { db, storage } from "../firebase";
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore';
 
 
 const store = useStore();
@@ -83,12 +83,7 @@ const downloadedUrl = ref(null);
 
 const users = ref();
 
-// onMounted(async () => {
-//   let users = await getDocs(collection(db, 'users'));
-//   users.forEach((user)=>{
-//     console.log(user.data(), user);
-//   })
-// })
+
 
 const handleFileUpload = (event) => {
   selectedFile.value = event.target.files[0];
@@ -99,42 +94,60 @@ const handleFileUpload = (event) => {
   reader.readAsDataURL(selectedFile.value);
 };
 
-const uploadImage = () => {
+const uploadImage = async () => {
   if (selectedFile.value) {
     const storageRef = storage.ref();
     const fileRef = storageRef.child(selectedFile.value.name);
-    fileRef.put(selectedFile.value)
+    await fileRef.put(selectedFile.value)
       .then(async (snapshot) => {
-        console.log('Uploaded a file:', snapshot.metadata.name);
-        downloadedUrl.value = await fileRef.getDownloadURL();
+        // console.log('Uploaded a file:', snapshot.metadata.name);
+        await fileRef.getDownloadURL()
+          .then((url) => {
+            downloadedUrl.value = url;
+          })
         imageUrl.value = null;
       })
       .catch(e => {
         console.error('Error uploading image:', e);
       })
   }
-
 };
 
 const submitForm = () => {
   // console.log('form submitted');
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(async (data) => {
-      console.log("Successfully Registered");
-      uploadImage();
+      // console.log("Successfully Registered");
+      await uploadImage();
+
+      //Date
+      const currentDate = new Date();
+      const options = {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      };
+
+      const formattedDate = currentDate.toLocaleDateString('en-US', options);
+      /////////
+      // console.log(downloadedUrl.value);
       const docRef = await addDoc(collection(db, "users"), {
         name: name.value,
-        is_artist: is_artist.value,
+        is_artist: is_artist.value === 'artist' ? true: false,
         email: email.value,
         uid: data.user.uid,
         profile_url: downloadedUrl.value,
+        account_created: formattedDate,
       });
 
-      console.log('user id here: ', data.user.uid);
+      // console.log('user id here: ', data.user.uid);
 
       store.dispatch('setUserUID', data.user.uid);
 
-      console.log('dispatched');
+      // console.log('dispatched');
       router.push({ name: 'Home' });
     })
     .catch((e) => {

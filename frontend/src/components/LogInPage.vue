@@ -52,15 +52,7 @@ const submitForm = () => {
       console.log("Successfully Logged in");
       // store.dispatch('login');
       console.log(data);
-      store.dispatch('setUserUID', data.user.uid);
-
-      const docRef = await addDoc(collection(db, "users"), {
-        first_name: 'test',
-        last_name: '2nd',
-        is_artist: false,
-        email: email.value,
-        uid: data.user.uid,
-      })
+      await store.dispatch('setUserUID', data.user.uid);
 
       // console.log(docRef);
       router.push({ name: 'Home' });
