@@ -1,10 +1,27 @@
-<script setup>
-  // import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
-<style scoped>
-</style>
+<script setup>
+// import HelloWorld from './components/HelloWorld.vue';
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useStore } from 'vuex';
+
+const store = useStore();
+const isLoggedIn = ref(false);
+const router = useRouter();
+
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      store.dispatch('login');
+    } else {
+      store.dispatch('logout')
+    }
+  })
+});
+</script> 

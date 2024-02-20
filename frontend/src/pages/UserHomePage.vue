@@ -106,8 +106,6 @@
       </div>
     </div>
   </div>
-  
-  <Pagination />
 </template>
 
 <script setup>
