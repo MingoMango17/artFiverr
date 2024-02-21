@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  content: [],
+  content: [
+    "node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}",
+    "node_modules/flowbite/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -17,16 +20,15 @@ export default {
         bermuda: "#78dcca",
         "dirty-white": "#F5F5F5",
         "army-green": "#1F4B3F",
-        "brownish": "#FBF8EF",
+        brownish: "#FBF8EF",
         "dark-orange": "#F2AA4CFF",
         "slime-green": "#4daa57",
         "dark-navy": "#0d0c22",
       },
       fontFamily: {
-        'dm-sans': ['DM Sans', 'sans-serif'],
+        "dm-sans": ["DM Sans", "sans-serif"],
       },
-
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };
