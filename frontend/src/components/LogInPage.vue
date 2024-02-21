@@ -116,6 +116,6 @@ const submitForm = async () => {
       console.log(errMsg.value);
     })
 
-  isLoading = false;
+  isLoading.value = false;
 };
 </script>
