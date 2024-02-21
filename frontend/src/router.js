@@ -97,13 +97,16 @@ router.beforeEach(async (to, from, next) => {
   // } else {
   //   next();
   // }
+  const routeExists = router.hasRoute(to.name);
 
   if (to.meta.requiresAuth) {
     if (await getCurrentUser()) {
       next();
     } else{
-      next({name: 'AccessDenied'})
+      next({name: 'AccessDenied'});
     }
+  } else if(!routeExists){
+    next({name: 'AccessDenied'});
   } else {
     next();
   }
