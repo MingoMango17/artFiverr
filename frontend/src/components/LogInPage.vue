@@ -1,4 +1,5 @@
 <template>
+  <LoadingModal :is-loading="isLoading" />
   <div
     class="main-container flex items-center justify-center py-12 px-4 max-w-screen-md mx-auto  shadow-lg rounded-md mt-10 bg-gradient-to-r from-orange-100 to-stone-300 font-dm-sans">
 
@@ -32,34 +33,72 @@
 </template>
 
 <script setup>
+import LoadingModal from "../components/LoadingModal.vue"
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useStore } from 'vuex';
 import { db } from '../firebase';
-import { addDoc, collection } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 const store = useStore();
 const email = ref('');
 const password = ref('');
 const errMsg = ref();
 const router = useRouter();
+const isLoading = ref(false);
 
-const submitForm = () => {
+const userData = ref(null);
+
+const getUserData = async () => {
+  const q = query(collection(db, 'users'), where('email', '==', email.value));
+  const querySnapshot = await getDocs(q);
+  // querySnapshot.forEach(doc => {
+  //   users.value.push({ id: doc.id, ...doc.data() });
+  // });
+  if (!querySnapshot.empty) {
+    userData.value = querySnapshot.docs[0].data();
+  } else {
+    userData.value = null; // Handle case where no user is found with the given email
+  }
+}
+
+// onMounted(async () => {
+//   const q = query(collection(db, 'users'), where('email', '=', email.value));
+//   const querySnapshot = await getDocs(q);
+//   // querySnapshot.forEach(doc => {
+//   //   users.value.push({ id: doc.id, ...doc.data() });
+//   // });
+//   userData.value = querySnapshot.data();
+// });
+
+const submitForm = async () => {
   // console.log('form submitted');
-  signInWithEmailAndPassword(getAuth(), email.value, password.value)
+  isLoading.value = true;
+  await signInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(async (data) => {
       console.log("Successfully Logged in");
       // store.dispatch('login');
-      console.log(data);
+      // console.log(data);
       await store.dispatch('setUserUID', data.user.uid);
+
+      await getUserData();
+
+      console.log(userData.value.name);
+
+      await store.dispatch('setUser', {
+        name: userData.value.name,
+        email: userData.value.email,
+        is_artist: userData.value.is_artist,
+        profileURL: userData.value.profile_url,
+      })
 
       // console.log(docRef);
       router.push({ name: 'Home' });
     })
     .catch((e) => {
       console.log(e.code);
-      switch (error.code) {
+      switch (e.code) {
         case "auth/invalid-email":
           errMsg.value = "Invalid email";
           break;
@@ -76,5 +115,7 @@ const submitForm = () => {
       alert(errMsg.value);
       console.log(errMsg.value);
     })
+
+  isLoading = false;
 };
 </script>

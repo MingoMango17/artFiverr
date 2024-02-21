@@ -20,6 +20,7 @@
           <li
             v-if="isLoggedIn"
             class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3"
+           
             @click="navigateToRoute('Hire')"
           >
             Hire
@@ -39,7 +40,7 @@
         <FwbAvatar
           v-if="isLoggedIn"
           bordered
-          img="src\assets\profile_sample.png"
+          :img="user.profileURL"
           rounded
           class="w-10 h-10 cursor-pointer"
           @click="toggleDropdown"
@@ -80,7 +81,9 @@
         >
           Sign Up
         </button>
-  
+        <button v-if="isLoggedIn" class="login-btn font-dm-sans hover:bg-dark-orange rounded-md py-2 px-3 "
+          @click="handleSignout">Log
+          Out</button>
       </div>
     </header>
     <hr />
@@ -97,14 +100,19 @@ import { FwbAvatar } from "flowbite-vue";
 const router = useRouter();
 const auth = getAuth();
 
+const open = ref(false);
+
 const store = useStore();
 
 const isLoggedIn = computed(() => store.getters.checkLogin);
+const user = computed(() => store.getters.getUser);
 const showDropdown = ref(false);
 
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
+console.log('user here ' + user.name);
+
 
 const navigateToRoute = (routeName) => {
   router.push({ name: routeName });
@@ -119,4 +127,6 @@ const handleSignout = () => {
     showDropdown.value = false; // close the dropdown after logout
   });
 };
+
+
 </script>

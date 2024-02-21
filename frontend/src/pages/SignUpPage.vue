@@ -94,10 +94,19 @@ const handleFileUpload = (event) => {
   reader.readAsDataURL(selectedFile.value);
 };
 
+const generateRandomId = (length) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomId = '';
+  for (let i = 0; i < length; i++) {
+    randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return randomId;
+}
+
 const uploadImage = async () => {
   if (selectedFile.value) {
     const storageRef = storage.ref();
-    const fileRef = storageRef.child(selectedFile.value.name);
+    const fileRef = storageRef.child(name.value + generateRandomId(20));
     await fileRef.put(selectedFile.value)
       .then(async (snapshot) => {
         // console.log('Uploaded a file:', snapshot.metadata.name);
@@ -146,7 +155,10 @@ const submitForm = () => {
       // console.log('user id here: ', data.user.uid);
 
       store.dispatch('setUserUID', data.user.uid);
-
+      store.dispatch('setUser', {
+        name: name.value,
+        profile_url: downloadedUrl.value,
+      });
       // console.log('dispatched');
       router.push({ name: 'Home' });
     })
