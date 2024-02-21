@@ -24,6 +24,7 @@ export default {
         "dark-orange": "#F2AA4CFF",
         "slime-green": "#4daa57",
         "dark-navy": "#0d0c22",
+        "text-gray": "#999999",
       },
       fontFamily: {
         "dm-sans": ["DM Sans", "sans-serif"],

@@ -39,27 +39,63 @@
         <FwbAvatar
           v-if="isLoggedIn"
           bordered
-          img="src\assets\profile_sample.png"
+          img="src\assets\group-2.png"
           rounded
           class="w-10 h-10 cursor-pointer"
           @click="toggleDropdown"
         />
+
         <div
           v-if="isLoggedIn"
           v-show="showDropdown"
-          class="absolute mt-2 right-0 bg-white rounded shadow-md"
+          class="absolute mt-2 right-1/2 transform translate-x-1/2 bg-white rounded-lg shadow-md font-dm-sans w-56"
         >
           <!-- Dropdown content goes here -->
-          <a
-            @click="navigateToRoute('YourRouteName')"
-            class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >Profile</a
-          >
-          <a
-            @click="handleSignout"
-            class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >Logout</a
-          >
+
+          <div class="name-container flex my-3 mx-3">
+            <img
+              src="../assets/group-2.png"
+              alt="profile-pic"
+              class="rounded-full h-8 w-8"
+            />
+            <div class="infos block">
+              <h1 class="text-sm font-medium ml-3 my-auto">
+                Zian Rinzler Valles
+              </h1>
+              <h1 class="text-xs text-text-gray ml-3 my-auto">
+                test@gmail.com
+              </h1>
+            </div>
+          </div>
+
+          <hr />
+          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer">
+            <!-- Image icon -->
+            <img
+              src="../assets/settings.png"
+              alt="Settings Icon"
+              class="w-4 h-4 mr-2"
+            />
+            <h1 class="text-sm">Profile Settings</h1>
+          </div>
+          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer">
+            <!-- Image icon -->
+            <img
+              src="../assets/upgrade.png"
+              alt="Upgrade Icon"
+              class="w-4 h-4 mr-2"
+            />
+            <h1 class="text-sm">Transactions</h1>
+          </div>
+          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer" @click=handleSignout>
+            <!-- Image icon -->
+            <img
+              src="../assets/sign-out.png"
+              alt="Settings Icon"
+              class="w-4 h-4 mr-2"
+            />
+            <h1 class="text-sm">Sign Out</h1>
+          </div>
         </div>
       </div>
 
@@ -80,7 +116,6 @@
         >
           Sign Up
         </button>
-  
       </div>
     </header>
     <hr />
