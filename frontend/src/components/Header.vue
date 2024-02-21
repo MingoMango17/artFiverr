@@ -12,7 +12,8 @@
       <nav class="mx-auto flex justify-between items-center">
         <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
           <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Home')">About</li>
-          <li v-if="isLoggedIn" class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Hire')">Hire</li>
+          <li v-if="isLoggedIn" class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3"
+            @click="navigateToRoute('Hire')">Hire</li>
           <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">Services</li>
           <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">Contact</li>
         </ul>
@@ -26,14 +27,16 @@
           @click="navigateToRoute('Signup')">
           Sign Up
         </button>
-        <button v-if="isLoggedIn" class="login-btn font-dm-sans hover:bg-dark-orange rounded-md py-2 px-3 " @click="handleSignout">Log
+        <button v-if="isLoggedIn" class="login-btn font-dm-sans hover:bg-dark-orange rounded-md py-2 px-3 "
+          @click="handleSignout">Log
           Out</button>
       </div>
     </header>
     <hr />
   </div>
 </template>
-  
+
+
 <script setup>
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
@@ -43,10 +46,15 @@ import { ref, computed } from 'vue';
 const router = useRouter();
 const auth = getAuth();
 
+const open = ref(false);
+
 const store = useStore();
 
 const isLoggedIn = computed(() => store.getters.checkLogin);
+const user = computed(() => store.getters.getUser);
 console.log(isLoggedIn);
+console.log('user here ' + user.name);
+
 
 const navigateToRoute = (routeName) => {
   router.push({ name: routeName });
@@ -59,5 +67,7 @@ const handleSignout = () => {
     router.push({ name: 'Home' });
   })
 }
+
+
 </script>
   
