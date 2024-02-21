@@ -116,7 +116,7 @@ const handleSignout = () => {
   signOut(auth).then(() => {
     console.log("Successfully logged out");
     store.dispatch("logout");
-    router.push({ name: "Home" });
+    router.push({ name: "LogIn" });
     showDropdown.value = false; // close the dropdown after logout
   });
 };

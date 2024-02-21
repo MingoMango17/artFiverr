@@ -6,6 +6,8 @@ import UserHomePage from './pages/UserHomePage.vue';
 import ChatPage from './pages/ChatPage.vue'
 import HireArtistPage from './pages/HireArtistPage.vue';
 import LogInPage from './components/LogInPage.vue';
+import ArtistSetupPage from './pages/ArtistSetupPage.vue';
+import ForbiddenPage from './error/ForbiddenPage.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useStore } from 'vuex';
 const routes = [
@@ -48,9 +50,21 @@ const routes = [
         path: 'login',
         name: 'LogIn',
         component: LogInPage,
-      }
+      },
+      {
+        path: 'artist/setup',
+        name: 'Setup',
+        component: ArtistSetupPage,
+        requiresAuth: true,
+      },
+      
       // Add more routes as needed
-    ]
+    ],
+  },
+  {
+    path: '/access-denied/',
+    name: 'AccessDenied',
+    component: ForbiddenPage,
   }
 ];
 
@@ -76,9 +90,19 @@ const getCurrentUser = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+  // if (to.matched.some((record) => record.meta.requiresAuth)) {
+  //   if (await getCurrentUser()) {
+  //     next();
+  //   }
+  // } else {
+  //   next();
+  // }
+
+  if (to.meta.requiresAuth) {
     if (await getCurrentUser()) {
       next();
+    } else{
+      next({name: 'AccessDenied'})
     }
   } else {
     next();
