@@ -32,7 +32,7 @@
           @click="toggleDropdown" />
 
         <div v-if="isLoggedIn" v-show="showDropdown"
-          class="absolute mt-2 right-1/2 transform translate-x-1/2 bg-white rounded-lg shadow-md font-dm-sans w-56">
+          class="absolute mt-2 right-1/2 transform translate-x-1/2 bg-white rounded-lg shadow-md font-dm-sans w-56 z-10">
           <!-- Dropdown content goes here -->
 
           <div class="name-container flex my-3 mx-3">
@@ -48,7 +48,7 @@
           </div>
 
           <hr />
-          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer">
+          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer" @click="navigateToRoute('ProfileSettings')">
             <!-- Image icon -->
             <img src="../assets/settings.png" alt="Settings Icon" class="w-4 h-4 mr-2" />
             <h1 class="text-sm">Profile Settings</h1>
