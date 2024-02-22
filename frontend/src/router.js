@@ -7,6 +7,8 @@ import ChatPage from './pages/ChatPage.vue'
 import HireArtistPage from './pages/HireArtistPage.vue';
 import LogInPage from './components/LogInPage.vue';
 // import ArtistSetupPage from './pages/ArtistSetupPage.vue';
+import ArtistProfile from './pages/ArtistProfile.vue';
+
 import ProfileSettings from './pages/ProfileSettings.vue';
 import ForbiddenPage from './error/ForbiddenPage.vue';
 import SignUp from './components/SignUp.vue'
@@ -62,6 +64,14 @@ const routes = [
         path: 'profile/settings',
         name: 'ProfileSettings',
         component: ProfileSettings,
+        meta: {
+          requiresAuth: true,
+        }
+      },
+      {
+        path: 'artistProfile',
+        name: 'ArtistProfile',
+        component: ArtistProfile,
       },
       // {
       //   path: 'artist/setup',

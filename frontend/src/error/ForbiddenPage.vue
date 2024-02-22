@@ -135,6 +135,19 @@
     </div>
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+onMounted(() => {
+    setTimeout(() => {
+        router.push({ name: 'LogIn' });
+    }, 3000);
+})
+</script>
+
 <style scoped>
 .cls-4 {
     fill: #ff9

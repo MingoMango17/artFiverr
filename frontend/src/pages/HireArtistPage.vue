@@ -21,7 +21,8 @@
         </div>
         <div class="gettouch ml-auto">
           <button
-            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm"
+            @click="navigateToRoute('ArtistProfile')"
+            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm hover:cursor-pointer"
           >
             Get in touch
           </button>
@@ -29,12 +30,21 @@
       </div>
 
       <div class="art-image flex justify-center items-center">
-        <!-- Added 'flex justify-center items-center' classes -->
-        <img
-          src="../assets/sample-art.jpg"
-          alt="Artist"
-          class="w-auto h-auto"
-        />
+        <img src="../assets/sample-art.jpg" alt="Artist" class="w-4/5 h-auto" />
+      </div>
+
+      <!-- description here -->
+
+      <div class="description my-10 mx-10">
+        <p class="text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          nec aliquam metus. Etiam mauris ligula, congue nec neque nec,
+          elementum maximus nisl. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Suspendisse nec aliquam metus. Etiam mauris ligula,
+          congue nec neque nec, elementum maximus nisl. Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit. Suspendisse nec aliquam metus.
+          Etiam mauris ligula, congue nec neque nec, elementum maximus nisl.
+        </p>
       </div>
 
       <div class="flex items-center mt-6">
@@ -68,3 +78,13 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+
+const navigateToRoute = (routeName) => {
+  router.push({ name: routeName });
+};
+</script>
