@@ -11,9 +11,9 @@ import ArtistProfile from './pages/ArtistProfile.vue';
 
 import ProfileSettings from './pages/ProfileSettings.vue';
 import ForbiddenPage from './error/ForbiddenPage.vue';
-
+import SignUp from './components/SignUp.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useStore } from 'vuex';
+
 const routes = [
   {
     path: '/',
@@ -24,11 +24,11 @@ const routes = [
         name: 'Home',
         component: HomePage
       },
-      {
-        path: 'signup',
-        name: 'Signup',
-        component: SignupPage,
-      },
+      // {
+      //   path: 'signup',
+      //   name: 'Signup',
+      //   component: SignupPage,
+      // },
       {
         path: 'hire',
         name: 'Hire',
@@ -56,9 +56,17 @@ const routes = [
         component: LogInPage,
       },
       {
-        path: 'profileSettings',
+        path: 'signup',
+        name: 'Signup',
+        component: SignUp,
+      },
+      {
+        path: 'profile/settings',
         name: 'ProfileSettings',
         component: ProfileSettings,
+        meta: {
+          requiresAuth: true,
+        }
       },
       {
         path: 'artistProfile',
@@ -88,8 +96,6 @@ const router = createRouter({
 });
 
 
-const store = useStore();
-
 const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
     const removeListener = onAuthStateChanged(
@@ -104,17 +110,13 @@ const getCurrentUser = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  // if (to.matched.some((record) => record.meta.requiresAuth)) {
-  //   if (await getCurrentUser()) {
-  //     next();
-  //   }
-  // } else {
-  //   next();
-  // }
   const routeExists = router.hasRoute(to.name);
 
   if (to.meta.requiresAuth) {
     if (await getCurrentUser()) {
+      if (to.meta.requiresArtist) {
+
+      }
       next();
     } else{
       next({name: 'AccessDenied'});

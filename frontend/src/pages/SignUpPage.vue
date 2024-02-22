@@ -48,26 +48,28 @@
         </div>
 
         <img v-if="imageUrl" :src="imageUrl" alt="Selected Image" class="rounded-full w-64 h-64">
-        <input type="file" @change="handleFileUpload">
+        <input type="file" @change="handleFileUpload" accept="image/*">
 
         <div>
           <button type="submit"
             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Sign up
+            Sign ups
           </button>
         </div>
       </form>
     </div>
   </div>
+  <LoadingModal :is-loading="isLoading" />
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import LoadingModal from "../components/LoadingModal.vue";
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useStore } from 'vuex';
 import { db, storage } from "../firebase";
-import { addDoc, collection } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 
 
 const store = useStore();
@@ -80,6 +82,8 @@ const is_artist = ref('')
 const imageUrl = ref(null);
 const selectedFile = ref(null);
 const downloadedUrl = ref(null);
+
+const isLoading = ref(false);
 
 const users = ref();
 
@@ -122,8 +126,9 @@ const uploadImage = async () => {
   }
 };
 
-const submitForm = () => {
+const submitForm = async () => {
   // console.log('form submitted');
+  isLoading.value = true;
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(async (data) => {
       // console.log("Successfully Registered");
@@ -141,31 +146,50 @@ const submitForm = () => {
       };
 
       const formattedDate = currentDate.toLocaleDateString('en-US', options);
-      /////////
-      // console.log(downloadedUrl.value);
-      const docRef = await addDoc(collection(db, "users"), {
+
+      const docRef = doc(db, 'users', data.user.uid);
+
+      await setDoc(docRef, {
         name: name.value,
-        is_artist: is_artist.value === 'artist' ? true: false,
+        is_artist: is_artist.value === 'artist' ? true : false,
         email: email.value,
         uid: data.user.uid,
-        profile_url: downloadedUrl.value,
+        profileURL: downloadedUrl.value,
         account_created: formattedDate,
-      });
-
+      })
       // console.log('user id here: ', data.user.uid);
 
       store.dispatch('setUserUID', data.user.uid);
       store.dispatch('setUser', {
         name: name.value,
-        profile_url: downloadedUrl.value,
+        email: email.value,
+        is_artist: is_artist.value === 'artist' ? true : false,
+        profileURL: downloadedUrl.value,
+        uid: data.user.uid,
       });
       // console.log('dispatched');
       router.push({ name: 'Home' });
     })
     .catch((e) => {
       console.log(e.code);
-      alert(e.message);
+      switch (e.code) {
+        case "auth/invalid-email":
+          errMsg.value = "Invalid email";
+          break;
+        case "auth/user-not-found":
+          errMsg.value = "No account with that email was found";
+          break;
+        case "auth/wrong-password":
+          errMsg.value = "Incorrect password";
+          break;
+        default:
+          errMsg.value = "Email or password was incorrect";
+          break;
+      }
+      alert(errMsg.value);
+      console.log(errMsg.value);
     })
+  isLoading.value = false;
 };
 
 </script>

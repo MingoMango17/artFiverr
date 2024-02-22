@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import LoadingModal from "../components/LoadingModal.vue"
+import LoadingModal from "./LoadingModal.vue"
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -90,7 +90,8 @@ const submitForm = async () => {
         name: userData.value.name,
         email: userData.value.email,
         is_artist: userData.value.is_artist,
-        profileURL: userData.value.profile_url,
+        profileURL: userData.value.profileURL,
+        uid: data.user.uid,
       })
 
       // console.log(docRef);
