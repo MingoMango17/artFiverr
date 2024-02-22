@@ -6,7 +6,8 @@ import UserHomePage from './pages/UserHomePage.vue';
 import ChatPage from './pages/ChatPage.vue'
 import HireArtistPage from './pages/HireArtistPage.vue';
 import LogInPage from './components/LogInPage.vue';
-import ArtistSetupPage from './pages/ArtistSetupPage.vue';
+// import ArtistSetupPage from './pages/ArtistSetupPage.vue';
+import ProfileSettings from './pages/ProfileSettings.vue';
 import ForbiddenPage from './error/ForbiddenPage.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useStore } from 'vuex';
@@ -52,11 +53,16 @@ const routes = [
         component: LogInPage,
       },
       {
-        path: 'artist/setup',
-        name: 'Setup',
-        component: ArtistSetupPage,
-        requiresAuth: true,
+        path: 'profile/settings',
+        name: 'ProfileSettings',
+        component: ProfileSettings,
       },
+      // {
+      //   path: 'artist/setup',
+      //   name: 'Setup',
+      //   component: ArtistSetupPage,
+      //   requiresAuth: true,
+      // },
       
       // Add more routes as needed
     ],
