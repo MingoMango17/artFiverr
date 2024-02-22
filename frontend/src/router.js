@@ -53,7 +53,7 @@ const routes = [
         component: LogInPage,
       },
       {
-        path: 'profileSettings',
+        path: 'profile/settings',
         name: 'ProfileSettings',
         component: ProfileSettings,
       },

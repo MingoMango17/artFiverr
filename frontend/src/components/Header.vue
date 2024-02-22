@@ -104,7 +104,6 @@ const showDropdown = ref(false);
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
-console.log('user here ' + user.name);
 
 
 const navigateToRoute = (routeName) => {
