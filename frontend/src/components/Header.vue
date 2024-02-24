@@ -10,6 +10,9 @@
       <nav class="mx-auto flex justify-between items-center">
         <ul class="flex text-black space-x-10 font-dm-sans font-semibold">
           <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('Home')">
+            Home
+          </li>
+          <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3" @click="navigateToRoute('AboutUs')">
             About
           </li>
           <li v-if="isLoggedIn" class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3"
