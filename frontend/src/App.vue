@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div class="bg-brownish h-lvh">
+    <router-view />
+  </div>
 </template>
 
 <script setup>

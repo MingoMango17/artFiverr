@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto bg-brownish flex space-x-2 ">
+  <div class="mx-auto bg-brownish flex space-x-2">
     <div class="w-2/3 font-dm-sans ">
       <h1 class="mt-20 mr-10 mb-5 font-semibold text-5xl text-army-green ">
         Unleash your imagination; commission the finest artistry tailored to
@@ -70,19 +70,11 @@
       </div>
     </div>
   </div>
-  {{ userUID }}
 </template>
   
 =
   
 <script setup>
 import { computed, ref } from "vue";
-import { useStore } from 'vuex';
-
-const store = useStore();
-
-const userUID = ref();
-
-userUID.value = computed(() => store.getters.getUserUID);
 
 </script>

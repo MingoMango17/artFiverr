@@ -11,6 +11,8 @@ const store = createStore({
             user: {
                 name: '',
                 profileURL: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
+                email: '',
+                is_artist: false,
             }
         }
     },
@@ -32,6 +34,12 @@ const store = createStore({
         LOGOUT(state) {
             state.isLoggedIn = false;
             state.userUID = '';
+            state.user = {
+                name: '',
+                profileURL: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
+                email: '',
+                is_artist: false,
+            };
         },
         SETUSERUID(state, uid) {
             state.userUID = uid;

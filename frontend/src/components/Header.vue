@@ -104,10 +104,13 @@ const isLoggedIn = computed(() => store.getters.checkLogin);
 const user = computed(() => store.getters.getUser);
 const showDropdown = ref(false);
 
+if (!user.value.profileURL) {
+  user.value.profileURL = 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png';
+};
+
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
-console.log('user here ' + user.name);
 
 
 const navigateToRoute = (routeName) => {
