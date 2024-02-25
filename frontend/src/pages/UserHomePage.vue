@@ -1,7 +1,7 @@
 <template>
   <!-- <SearchBar /> -->
   <div class="h-screen">
-    <div class="mt-10 flex font-dm-sans" v-for="artists in artistsList">
+    <div class="mt-10 flex font-dm-sans h-screen" v-for="artists in artistsList">
       <div class="mr-10 w-1/4" v-for="artist in artists">
         <div class="rounded-lg overflow-hidden shadow-lg cursor-pointer relative w-full w-1/4 h-4/5"
           @click="navigateToArtistRoute('Artist', artist.id)">
