@@ -1,6 +1,6 @@
 <template>
   <SearchBar />
-  <div class="mt-10 flex font-dm-sans">
+  <div class="mt-10 flex font-dm-sans h-screen">
     <div class="mr-10 w-1/4">
       <div
         class="rounded-lg overflow-hidden shadow-lg cursor-pointer"
