@@ -14,8 +14,10 @@
           <p class="text-slime-green text-xs">Available for work</p>
         </div>
         <div class="gettouch ml-auto">
-          <button @click="navigateToRoute('ArtistProfile')"
-            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm hover:cursor-pointer">
+          <button 
+            @click="navigateToRoute('ArtistProfile')"
+            class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm hover:cursor-pointer"
+          >
             Get in touch
           </button>
         </div>
