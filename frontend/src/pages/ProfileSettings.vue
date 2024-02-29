@@ -2,7 +2,8 @@
   <div class="h-screen">
     <form @submit.prevent="submitForm">
       <div class="main-container font-dm-sans">
-        <div class="cover-photo bg-gradient-to-r from-emerald-500 to-emerald-900 w-full h-96 relative hover:cursor-pointer">
+        <div class="cover-photo w-full h-96 relative hover:cursor-pointer">
+          <img src="/src/assets/sample-art.jpg" alt="" class="w-full h-96" />
           <div class="image-container absolute z-15 bottom-0 left-0 mx-10 -my-20 bg-white p-3 rounded-full">
             <img :src="userData.profileURL" alt="" class="rounded-full w-40 h-40 hover:cursor-pointer" />
           </div>
@@ -63,7 +64,7 @@
             </div>
           </div>
 
-          <div class="second-container flex">
+          <div v-if="user.isArtist" class="second-container flex">
             <div class="left-side flex-1">
               <h1 class="text-3xl font-bold">Price Range</h1>
               <div class="my-10 flex">
@@ -93,11 +94,14 @@
 
 <script setup>
 import { onBeforeMount, ref, computed } from "vue";
+import { useRouter } from "vue-router";
 import { FwbInput, FwbButton } from "flowbite-vue";
 import { useStore } from "vuex";
+import { db } from "../firebase";
 import { doc, setDoc } from 'firebase/firestore';
 
 const store = useStore();
+const router = useRouter();
 
 const userData = ref(null);
 const user = computed(() => store.getters.getUser);
@@ -105,12 +109,6 @@ const user = computed(() => store.getters.getUser);
 onBeforeMount(async () => {
   userData.value = {
     ...user.value,
-    contactNumber: '0912345678',
-    facebook: 'fb.com/zian123',
-    insta: 'instagram.com/zian123',
-    about: '',
-    priceRange_min: 0,
-    priceRange_maximum: 0,
   }
 })
 
@@ -131,16 +129,15 @@ const selectOption = (option) => {
 
 const submitForm = async () => {
   const data = userData.value;
-  const docRef = doc(db, 'artWorks', userData.uid);
+  const docRef = doc(db, 'users', data.uid);
   await setDoc(docRef, {
     name: data.name,
     contactNumber: data.contactNumber,
     facebook: data.facebook,
     insta: data.insta,
     about: data.about,
-    priceRange_min: data.priceRange_min,
-    priceRange_max: data.priceRange_maximum
   }, { merge: true })
+  // router.push({name: "Home"});
+  window.location.reload();
 }
-
 </script>
