@@ -9,6 +9,7 @@ import LogInPage from './components/LogInPage.vue';
 // import ArtistSetupPage from './pages/ArtistSetupPage.vue';
 import ArtistProfile from './pages/ArtistProfile.vue';
 import AboutUs from './pages/AboutUs.vue'
+import ContactUs from './pages/ContactUs.vue'
 import ProfileSettings from './pages/ProfileSettings.vue';
 import ForbiddenPage from './error/ForbiddenPage.vue';
 import SignUp from './components/SignUp.vue'
@@ -77,6 +78,11 @@ const routes = [
         path: 'aboutUs',
         name: 'AboutUs',
         component: AboutUs,
+      },
+      {
+        path: 'contactUs',
+        name: 'ContactUs',
+        component: ContactUs,
       },
       // {
       //   path: 'artist/setup',
