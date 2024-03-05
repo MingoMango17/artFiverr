@@ -1,14 +1,25 @@
 <template>
-  <div class="flex flex-col items-center mt-8">
+  <div class="flex flex-col items-center mt-8 font-dm-sans">
+    <div class="album-name flex flex-col items-center justify-center p-5">
+      <p class="font-bold text-2xl">Add New Album</p>
+      <p class="text-base text-gray-400 mt-3">Title(required)</p>
+      <input type="text" required class="rounded-md mt-3 w-64" />
+    </div>
     <div
-      class="w-72 h-48 border-2 border-dashed border-gray-400 flex justify-center items-center cursor-pointer flex-col"
+      class="w-1/2 h-48 border-4 border-dashed border-gray-400 flex justify-center items-center cursor-pointer flex-col"
+      :class="{ 'border-blue-700': isDragging }"
       @dragover.prevent
+      @dragenter="handleDragEnter"
+      @dragleave="handleDragLeave"
       @drop="handleDrop"
     >
       <span>Drop Photos Here</span>
-      <img src="../assets/photos.png" alt="photos">
+      <img src="../assets/photos.png" alt="photos" />
     </div>
-    <div v-if="previewImages.length" class="mt-4 flex flex-wrap items-center justify-center ">
+    <div
+      v-if="previewImages.length"
+      class="mt-4 flex flex-wrap items-center justify-center"
+    >
       <div
         v-for="(previewImage, index) in previewImages"
         :key="index"
@@ -31,7 +42,7 @@
       class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       @click="uploadImages"
     >
-      Upload
+      Save & Upload
     </button>
   </div>
 </template>
@@ -41,11 +52,13 @@ export default {
   data() {
     return {
       previewImages: [],
+      isDragging: false,
     };
   },
   methods: {
     handleDrop(event) {
       event.preventDefault();
+      this.isDragging = false; // Reset the drag state
       const files = event.dataTransfer.files;
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -57,6 +70,14 @@ export default {
           reader.readAsDataURL(file);
         }
       }
+    },
+    handleDragEnter(event) {
+      event.preventDefault();
+      this.isDragging = true;
+    },
+    handleDragLeave(event) {
+      event.preventDefault();
+      this.isDragging = false;
     },
     deleteImage(index) {
       this.previewImages.splice(index, 1);
