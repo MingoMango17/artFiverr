@@ -6,7 +6,7 @@ import UserHomePage from './pages/UserHomePage.vue';
 import ChatPage from './pages/ChatPage.vue'
 import HireArtistPage from './pages/HireArtistPage.vue';
 import LogInPage from './components/LogInPage.vue';
-// import ArtistSetupPage from './pages/ArtistSetupPage.vue';
+import ArtistSetupPage from './pages/ArtistSetupPage.vue';
 import ArtistProfile from './pages/ArtistProfile.vue';
 import AboutUs from './pages/AboutUs.vue'
 import ContactUs from './pages/ContactUs.vue'
@@ -84,6 +84,11 @@ const routes = [
         name: 'ContactUs',
         component: ContactUs,
       },
+      {  
+        path: 'artist-setup',
+        name: 'ArtistSetup',
+        component: ArtistSetupPage
+      }
       // {
       //   path: 'artist/setup',
       //   name: 'Setup',

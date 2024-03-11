@@ -23,11 +23,8 @@
           >
             About
           </li>
-          <li
-            v-if="isLoggedIn"
-            class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3"
-            @click="navigateToRoute('Hire')"
-          >
+          <li v-if="isLoggedIn && !user.is_artist" class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3"
+            @click="navigateToRoute('Hire')">
             Hire
           </li>
           <li class="cursor-pointer hover:bg-dark-orange rounded-md py-2 px-3">
@@ -80,6 +77,7 @@
           <hr />
           <div
             class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer"
+           
             @click="navigateToRoute('ProfileSettings')"
           >
             <!-- Image icon -->
@@ -101,10 +99,12 @@
             />
             <h1 class="text-sm">Transactions</h1>
           </div>
-          <div
-            class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer"
-            @click="handleSignout"
-          >
+          <div v-if="user.is_artist" class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer" @click="navigateToRoute('ArtistSetup')">
+            <!-- Image icon -->
+            <img src="../assets/sign-out.png" alt="Settings Icon" class="w-4 h-4 mr-2" />
+            <h1 class="text-sm">Setup Artist Page</h1>
+          </div>
+          <div class="px-4 py-2 text-gray-800 hover:bg-gray-200 flex hover:cursor-pointer" @click="handleSignout">
             <!-- Image icon -->
             <img
               src="../assets/sign-out.png"
