@@ -34,7 +34,7 @@
 
 <script setup>
 import LoadingModal from "./LoadingModal.vue"
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useStore } from 'vuex';
@@ -49,6 +49,7 @@ const router = useRouter();
 const isLoading = ref(false);
 
 const userData = ref(null);
+
 
 const getUserData = async () => {
   const q = query(collection(db, 'users'), where('email', '==', email.value));
@@ -72,6 +73,12 @@ const getUserData = async () => {
 //   userData.value = querySnapshot.data();
 // });
 
+onMounted(() => {
+  const isLoggedIn = computed(() => store.getters.checkLogin);
+  console.log(isLoggedIn.value);
+  if (isLoggedIn.value) router.push({ name: 'Home' });
+})
+
 const submitForm = async () => {
   // console.log('form submitted');
   isLoading.value = true;
@@ -87,11 +94,7 @@ const submitForm = async () => {
       console.log(userData.value.name);
 
       await store.dispatch('setUser', {
-        name: userData.value.name,
-        email: userData.value.email,
-        is_artist: userData.value.is_artist,
-        profileURL: userData.value.profileURL,
-        uid: data.user.uid,
+        ...userData.value
       })
 
       // console.log(docRef);
