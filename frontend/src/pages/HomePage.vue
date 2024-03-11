@@ -1,4 +1,5 @@
 <template>
+
   <div class="mx-auto bg-brownish flex space-x-2">
     <div class="w-2/3 font-dm-sans ">
       <h1 class="mt-20 mr-10 mb-5 font-semibold text-5xl text-army-green ">
