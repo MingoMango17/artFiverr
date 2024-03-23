@@ -15,6 +15,7 @@
     "firebase": "^10.8.0",
     "flowbite": "^2.3.0",
     "flowbite-vue": "^0.1.2",
+    "keen-slider": "^6.8.6",
     "vue": "^3.3.11",
     "vue-router": "^4.0.13",
     "vuex": "^4.1.0",

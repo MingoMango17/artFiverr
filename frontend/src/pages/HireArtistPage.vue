@@ -27,7 +27,8 @@
 
       <!-- <img src="../assets/sample-art.jpg" alt="Artist" class="w-4/5 h-auto" /> -->
       <!-- <fwb-carousel :pictures="pictures" /> -->
-      <Carousel />
+      <Carousel :images="artistData.imageUrls" />
+
       <!-- description here -->
 
       <div class="description my-10 mx-10">
@@ -63,13 +64,14 @@
 </template>
 
 <script setup>
-import { FwbCarousel } from 'flowbite-vue';
+import { FwbCard, FwbCarousel } from 'flowbite-vue';
 import { onBeforeMount, onMounted, ref } from 'vue';
 import { useRouter } from "vue-router";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import LoadingModal from "../components/LoadingModal.vue";
 import Carousel from "../components/Carousel.vue";
+import sample from '../assets/profile_sample.png';
 
 const router = useRouter();
 const isLoading = ref(false);
@@ -77,9 +79,9 @@ const artistData = ref();
 
 const userID = router.currentRoute.value.params.artistId;
 const pictures = [
-  { src: '../assets/profile_sample.png', alt: 'image 1' },
-  { src: 'https://www.uwb.edu/ias/wp-content/uploads/2023/05/gml-textures-colorful-painting-standard.jpg', alt: 'image 2' },
-  { src: '../assets/profile_sample.png', alt: 'image 3' },
+  'https://www.uwb.edu/ias/wp-content/uploads/2023/05/gml-textures-colorful-painting-standard.jpg',
+  "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
+  "https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
 ]
 const navigateToRoute = (routeName) => {
   router.push({ name: routeName });
