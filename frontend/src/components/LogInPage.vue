@@ -48,6 +48,7 @@ const errMsg = ref();
 const router = useRouter();
 const isLoading = ref(false);
 
+const isLoggedIn = computed(() => store.getters.checkLogin);
 const userData = ref(null);
 
 
@@ -74,7 +75,6 @@ const getUserData = async () => {
 // });
 
 onMounted(() => {
-  const isLoggedIn = computed(() => store.getters.checkLogin);
   console.log(isLoggedIn.value);
   if (isLoggedIn.value) router.push({ name: 'Home' });
 })
@@ -98,7 +98,8 @@ const submitForm = async () => {
       })
 
       // console.log(docRef);
-      router.push({ name: 'Home' });
+      if(userData.value) router.push({ name: 'Home' });
+      else alert("Can't connect to server");
     })
     .catch((e) => {
       console.log(e.code);

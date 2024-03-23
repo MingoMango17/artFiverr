@@ -47,6 +47,7 @@ const routes = [
         path: 'artist/:artistId',
         name: 'Artist',
         component: HireArtistPage,
+        props: true,
         meta: {
           requiresAuth: true,
         }
@@ -87,7 +88,7 @@ const routes = [
       {  
         path: 'artist-setup',
         name: 'ArtistSetup',
-        component: ArtistSetupPage
+        component: ContactUs
       }
       // {
       //   path: 'artist/setup',

@@ -1,6 +1,5 @@
 <template>
-
-  <div class="mx-auto bg-brownish flex space-x-2">
+  <div class="main-container h-full bg-brownish flex space-x-2">
     <div class="w-2/3 font-dm-sans ">
       <h1 class="mt-20 mr-10 mb-5 font-semibold text-5xl text-army-green ">
         Unleash your imagination; commission the finest artistry tailored to
@@ -28,7 +27,7 @@
       <img src="../assets/artist.svg" alt="Artist" class="object-center" />
     </div>
   </div>
-  <div class="mb-10 bg-army-green rounded-lg p-8 text-white font-dm-sans">
+  <div class="bg-army-green rounded-lg p-8 text-white font-dm-sans">
     <h1 class="font-bold text-2xl mb-10">Need Something Done?</h1>
     <div class="flex space-x-4">
       <div class="mb-4">
