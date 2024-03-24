@@ -1,6 +1,6 @@
 <template>
   <div class="keen-slider" ref="container">
-    <div class="keen-slider__slide lazy__slide" v-for="(src, idx) in images" :key="idx">
+    <div class="keen-slider__slide lazy__slide rounded-lg" v-for="(src, idx) in images" :key="idx">
       <img :src="loaded[idx] ? src : ''" />
     </div>
   </div>
@@ -41,7 +41,7 @@ const [container] = useKeenSlider({
 
 @media (min-width: 768px) {
   .lazy__slide {
-    height: 300px;
+    height: 500px;
   }
 }
 

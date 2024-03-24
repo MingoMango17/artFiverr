@@ -3,18 +3,27 @@
   <div class="hire-an-artist-page" v-if="!isLoading">
     <div class="artist-profile bg-white rounded-lg shadow-lg p-6 items-center font-dm-sans">
       <div class="coverphoto relative">
-        <img src="../assets/test-cover.png" alt="" class="w-full max-h-96 object-cover hover:cursor-pointer" />
+        <img src="../assets/test-cover.png" alt=""
+          class="w-full rounded-lg max-h-96 object-cover hover:cursor-pointer" />
         <div class="image-container absolute z-15 bottom-0 left-0 mx-10 -my-20 bg-white p-3 rounded-full">
-          <img src="../assets/sample-art.jpg" alt="" class="rounded-full w-40 h-40 hover:cursor-pointer" />
+          <img :src="artistData.artistProfileUrl" alt="" class="rounded-full w-40 h-40 hover:cursor-pointer" />
         </div>
       </div>
-      <div class="profile-container my-5 flex items-center mt-20">
-        <div class="box-pic w-12 h-12">
-          <img :src="artistData.artistProfileUrl" alt="Artist" class="rounded-full h-auto w-auto" />
-        </div>
-        <div class="name-container ml-3">
-          <p>{{ artistData.artist }}</p>
-          <p class="text-slime-green text-xs">Available for work</p>
+
+      <div class="profile-container my-5 flex items-center mt-20 mx-10 flex">
+
+        <div class="name-container ml-3 text-4xl flex">
+          <div class="name-container flex">
+            <div class="first w-full flex">
+              <h1 class="text-4xl font-bold">Zian Rinzler Valles</h1>
+              <div class="availablework flex ml-3 justify-center items-center">
+                <img src="../assets/online.png" alt="check" class="w-5 h-5" />
+                <p class="text-slime-green text-xs ml-1">Available for work</p>
+              </div>
+            </div>
+
+
+          </div>
         </div>
         <div class="gettouch ml-auto">
           <button @click="navigateToRoute('ArtistProfile')"
@@ -24,6 +33,48 @@
         </div>
       </div>
 
+      <div>
+        <div class="aboutme mx-10 mt-5 flex">
+          <!-- <p class="w-2/4 text-lg">
+            {{ user.about || descriptionPlaceholder}}
+          </p> -->
+          <p class="rounded-md w-2/4 text-lg h-40">
+            Passionate artist capturing emotions on canvas. 🎨 Exploring the
+            vibrant palette of life through brushstrokes.
+            Let colors tell stories and emotions dance on the canvas.
+            Join me on this visual journey! ✨ #ArtisticSoul #CanvasDreams
+          </p>
+
+          <div class="right-side flex mx-auto items-center">
+            <div class="rate flex-col mr-8">
+              <div class="flex items-center mb-2">
+                <img src="../assets/rate.png" alt="rate" class="w-8 h-8 mr-2" />
+                <p class="font-medium">
+                <p>0</p>
+                -
+                <p>5</p>
+                </p>
+              </div>
+              <p class="text-center text-xs">Estimated Rate</p>
+            </div>
+
+            <div class="review flex-col mr-8">
+              <div class="flex items-center mb-2">
+                <img src="../assets/review.png" alt="review" class="w-8 h-8 mr-2" />
+                <p class="font-medium">N/A</p>
+              </div>
+              <p class="text-center text-xs">Total Reviews</p>
+            </div>
+            <div class="clients flex-col mr-8">
+              <div class="flex items-center mb-2">
+                <img src="../assets/client.png" alt="client" class="w-8 h-8 mr-2" />
+                <p class="font-medium">N/A</p>
+              </div>
+              <p class="text-center text-xs">Total Clients</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- <img src="../assets/sample-art.jpg" alt="Artist" class="w-4/5 h-auto" /> -->
       <!-- <fwb-carousel :pictures="pictures" /> -->
@@ -52,7 +103,7 @@
 
       <div class="name-container ml-3 flex items-center justify-center my-4">
         <div class="text-center">
-          <p class="mb-2">Zian Rinzler Valles</p>
+          <p class="mb-2">{{ artistData.artist }}</p>
 
           <button class="bg-dark-navy rounded-full py-2 px-3 text-white text-sm">
             Get in touch
@@ -78,11 +129,6 @@ const isLoading = ref(false);
 const artistData = ref();
 
 const userID = router.currentRoute.value.params.artistId;
-const pictures = [
-  'https://www.uwb.edu/ias/wp-content/uploads/2023/05/gml-textures-colorful-painting-standard.jpg',
-  "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-  "https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-]
 const navigateToRoute = (routeName) => {
   router.push({ name: routeName });
 };

@@ -15,12 +15,10 @@
           <div class="first w-2/4 flex">
             <h1 class="text-4xl font-bold">{{ user.name }}</h1>
             <div class="availablework flex ml-3 justify-center items-center">
-              <img src="../assets/online.png" alt="check" class="w-5 h-5" />
-              <p class="text-slime-green text-xs ml-1">Available for work</p>
             </div>
           </div>
         </div>
-
+        
         <div class="aboutme mx-10 mt-5 flex">
           <!-- <p class="w-2/4 text-lg">
             {{ user.about || descriptionPlaceholder}}
